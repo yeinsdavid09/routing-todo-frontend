@@ -1,5 +1,6 @@
 //* Base
 import "./App.css";
+import { ModalProvider } from "./contexts/modalContext";
 
 //* Contexts
 import { TasksProvider } from "./contexts/tasksContext";
@@ -10,7 +11,9 @@ import { Layout } from "./layout/Layout";
 export function App() {
   return (
     <TasksProvider>
-      <Layout></Layout>;
+      <ModalProvider>
+        <Layout></Layout>;
+      </ModalProvider>
     </TasksProvider>
   );
 }

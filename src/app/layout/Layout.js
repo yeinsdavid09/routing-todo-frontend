@@ -5,6 +5,7 @@ import "./Layout.css";
 
 //* Contexts
 import { TasksContext } from "../contexts/tasksContext";
+import { ModalContext } from "../contexts/modalContext";
 
 //* Components
 import {
@@ -15,13 +16,16 @@ import {
   Header,
   Footer,
   Button,
+  Form,
 } from "../components";
+import { Modal } from "../portals/Modal/Modal";
 
 export function Layout() {
   //#region --------------------------------- Variables ---------------------------------
 
   const { searchedTasks, checkTasks, deleteTasks, loading, error } =
     useContext(TasksContext);
+  const { onModal, setOnModal } = useContext(ModalContext);
 
   //#endregion
 
@@ -68,12 +72,17 @@ export function Layout() {
           </List>
         </div>
         <div className="LAYOUT__buttons">
-          <Button></Button>
+          <Button onButtonClick={() => setOnModal(true)}></Button>
         </div>
       </main>
       <footer className="LAYOUT__footer">
         <Footer></Footer>
       </footer>
+      {onModal && (
+        <Modal>
+          <Form></Form>
+        </Modal>
+      )}
     </div>
   );
 
