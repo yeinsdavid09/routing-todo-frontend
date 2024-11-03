@@ -1,0 +1,59 @@
+.FORM__main-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 300px;
+
+	.FORM__label {
+		display: block;
+		width: 100%;
+		margin-bottom: 0.5rem;
+	}
+	.FORM__input {
+		display: block;
+		width: 100%;
+		min-height: 10rem;
+		padding-block: 0.75rem;
+		padding-inline: 1.5rem;
+		border-radius: 0.5rem;
+		border: 2px solid var(--primary-color);
+		background-color: transparent;
+		outline: none;
+		transition: var(--primary-transition-all);
+		&:focus {
+			border-color: var(--secondary-color);
+		}
+	}
+	.FORM__buttons {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+
+		.FORM__button {
+			width: 100%;
+			display: block;
+			padding-block: 0.75rem;
+			padding-inline: 1.5rem;
+			border-radius: 0.5rem;
+			border: none;
+			cursor: pointer;
+
+			.FORM__span {
+				color: var(--light-color);
+				text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+			}
+			&.--cancel {
+				background-color: var(--error-color);
+			}
+			&.--save {
+				background-color: var(--success-color);
+			}
+		}
+	}
+}

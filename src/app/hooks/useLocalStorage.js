@@ -17,7 +17,7 @@ export function useLocalStorage(keyword, initialValue) {
       const parsedItem = storageItem ? JSON.parse(storageItem) : initialValue;
       setItem(parsedItem);
       setLoading(false);
-    }, 2000);
+    }, 1000);
   }, [keyword, initialValue]);
 
   //#endregion

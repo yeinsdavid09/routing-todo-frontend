@@ -7,5 +7,6 @@ export { List } from "./List/List";
 export { Header } from "./Header/Header";
 export { Footer } from "./Footer/Footer";
 export { Button } from "./Button/Button";
+export { Form } from "./Form/Form";
 
 //#endregion

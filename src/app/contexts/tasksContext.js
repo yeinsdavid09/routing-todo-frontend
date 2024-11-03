@@ -4,14 +4,6 @@ import { createContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { LS_KEYS } from "../utils/constants";
 
-const defaultTasks = [
-  { id: 1, description: "Task 1", completed: true },
-  { id: 2, description: "Task 2", completed: false },
-  { id: 3, description: "Task 3", completed: false },
-  { id: 4, description: "Task 4", completed: false },
-  { id: 5, description: "Task 5", completed: false },
-];
-
 //#region --------------------------------- Context ---------------------------------
 
 export const TasksContext = createContext();
@@ -28,7 +20,7 @@ export function TasksProvider({ children }) {
     saveItem: setTasks,
     loading,
     error,
-  } = useLocalStorage(LS_KEYS.TASKS, defaultTasks);
+  } = useLocalStorage(LS_KEYS.TASKS, []);
   const [searchValue, setSearchValue] = useState("");
   const completedTasks = tasks.filter((task) => task.completed).length;
   const totalTasks = tasks.length;
@@ -39,6 +31,16 @@ export function TasksProvider({ children }) {
   //#endregion
 
   //#region --------------------------------- Methods ---------------------------------
+
+  function addTasks(newTask) {
+    const tasksCopy = [...tasks];
+    tasksCopy.push({
+      id: tasksCopy.length + 2,
+      description: newTask,
+      completed: false,
+    });
+    setTasks(tasksCopy);
+  }
 
   function checkTasks(taskIndex) {
     const tasksCopy = [...tasks];
@@ -64,6 +66,7 @@ export function TasksProvider({ children }) {
         searchValue,
         setSearchValue,
         searchedTasks,
+        addTasks,
         checkTasks,
         deleteTasks,
         loading,
