@@ -19,11 +19,17 @@ export function Item({
         <span className="ITEM__text GLOBAL__text-body--1">{description}</span>
       </div>
       <div className="ITEM__buttons--wrapper">
-        <span className="ITEM__button --check" onClick={onComplete}>
-          v
+        <span
+          className="ITEM__button --check GLOBAL__text-body--1"
+          onClick={onComplete}
+        >
+          &#10003;
         </span>
-        <span className="ITEM__button --remove" onClick={onDelete}>
-          x
+        <span
+          className="ITEM__button --remove GLOBAL__text-body--1"
+          onClick={onDelete}
+        >
+          &#10007;
         </span>
       </div>
     </li>
