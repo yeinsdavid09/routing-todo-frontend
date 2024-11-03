@@ -24,7 +24,9 @@
 		}
 
 		.LAYOUT__list {
-			.LAYOUT__loading, .LAYOUT__error{
+			.LAYOUT__loading, .LAYOUT__error, .LAYOUT__empty{
+				max-width: 70%;
+				margin-inline: auto;
 				margin-top: 4rem;
 				text-align: center;
 				color: var(--secondary-color);

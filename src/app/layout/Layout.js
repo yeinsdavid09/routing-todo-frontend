@@ -51,8 +51,13 @@ export function Layout() {
               </p>
             )}
             {error && (
-              <p className="LAYOUT__loading GLOBAL__text-heading--3">
+              <p className="LAYOUT__error GLOBAL__text-heading--3">
                 Ups... Algo salió mal
+              </p>
+            )}
+            {!loading && !error && searchedTasks.length === 0 && (
+              <p className="LAYOUT__empty GLOBAL__text-heading--3">
+                Aún no tienes tareas. Haz click en el botón para agregar una.
               </p>
             )}
             {!loading &&
