@@ -1,70 +1,80 @@
+import { useContext } from "react";
+
 //* Base
 import "./Layout.css";
-import { useState } from "react";
 
-//* Hooks
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import { LS_KEYS } from "../utils/constants";
+//* Contexts
+import { TasksContext } from "../contexts/tasksContext";
 
 //* Components
-import { LayoutUi } from "./Layout.ui";
-
-const defaultTasks = [
-  { id: 1, description: "Task 1", completed: true },
-  { id: 2, description: "Task 2", completed: false },
-  { id: 3, description: "Task 3", completed: false },
-  { id: 4, description: "Task 4", completed: false },
-  { id: 5, description: "Task 5", completed: false },
-];
+import {
+  Item,
+  Counter,
+  Search,
+  List,
+  Header,
+  Footer,
+  Button,
+} from "../components";
 
 export function Layout() {
   //#region --------------------------------- Variables ---------------------------------
 
-  const {
-    item: tasks,
-    saveItem: setTasks,
-    loading,
-    error,
-  } = useLocalStorage(LS_KEYS.TASKS, defaultTasks);
-  const [searchValue, setSearchValue] = useState("");
-  const completedTasks = tasks.filter((task) => task.completed).length;
-  const totalTasks = tasks.length;
-  const searchedTasks = tasks.filter((task) =>
-    task.description.toLowerCase().includes(searchValue.toLowerCase())
-  );
-
-  //#endregion
-
-  //#region --------------------------------- Methods ---------------------------------
-
-  function checkTasks(taskIndex) {
-    const tasksCopy = [...tasks];
-    tasksCopy[taskIndex].completed = !tasksCopy[taskIndex].completed;
-    setTasks(tasksCopy);
-  }
-
-  function deleteTasks(taskIndex) {
-    const tasksCopy = [...tasks];
-    tasksCopy.splice(taskIndex, 1);
-    setTasks(tasksCopy);
-  }
+  const { searchedTasks, checkTasks, deleteTasks, loading, error } =
+    useContext(TasksContext);
 
   //#endregion
 
   //#region --------------------------------- Html ---------------------------------
 
   return (
-    <LayoutUi
-      completedTasks={completedTasks}
-      totalTasks={totalTasks}
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      searchedTasks={searchedTasks}
-      checkTasks={checkTasks}
-      deleteTasks={deleteTasks}
-      loading={loading}
-      error={error}
-    ></LayoutUi>
+    <div className="LAYOUT__main-container">
+      <header className="LAYOUT__header">
+        <Header></Header>
+      </header>
+      <main className="LAYOUT__main">
+        <div className="LAYOUT__counter">
+          <Counter></Counter>
+        </div>
+        <div className="LAYOUT__search">
+          <Search></Search>
+        </div>
+        <div className="LAYOUT__list">
+          <List>
+            {loading && (
+              <p className="LAYOUT__loading GLOBAL__text-heading--3">
+                Cargando tareas...
+              </p>
+            )}
+            {error && (
+              <p className="LAYOUT__loading GLOBAL__text-heading--3">
+                Ups... Algo salió mal
+              </p>
+            )}
+            {!loading &&
+              !error &&
+              searchedTasks?.map((task, index) => {
+                return (
+                  <Item
+                    key={task.id}
+                    taskIndex={index}
+                    description={task.description}
+                    completed={task.completed}
+                    onComplete={() => checkTasks(index)}
+                    onDelete={() => deleteTasks(index)}
+                  ></Item>
+                );
+              })}
+          </List>
+        </div>
+        <div className="LAYOUT__buttons">
+          <Button></Button>
+        </div>
+      </main>
+      <footer className="LAYOUT__footer">
+        <Footer></Footer>
+      </footer>
+    </div>
   );
 
   //#endregion

@@ -1,7 +1,15 @@
 //* Base
+import { useContext } from "react";
 import "./Search.css";
+import { TasksContext } from "../../contexts/tasksContext";
 
-export function Search({ searchValue, setSearchValue }) {
+export function Search() {
+  //#region --------------------------------- Variables ---------------------------------
+
+  const { searchValue, setSearchValue } = useContext(TasksContext);
+
+  //#endregion
+
   //#region --------------------------------- Html ---------------------------------
 
   return (

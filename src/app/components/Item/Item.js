@@ -8,6 +8,8 @@ export function Item({
   onComplete,
   onDelete,
 }) {
+  //#region --------------------------------- Html ---------------------------------
+
   return (
     <li className={`ITEM__container ${completed && "--completed"}`}>
       <div className="ITEM__texts--wrapper">
@@ -26,4 +28,6 @@ export function Item({
       </div>
     </li>
   );
+
+  //#endregion
 }
