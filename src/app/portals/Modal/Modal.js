@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useContext } from "react";
 
 //* Base
-import "./Modal.css";
+import style from "./Modal.module.css";
 
 //* Contexts
 import { ModalContext } from "../../contexts/modalContext";
@@ -18,8 +18,8 @@ export function Modal({ children }) {
   //#region --------------------------------- Return ---------------------------------
 
   return createPortal(
-    <div className="MODAL__main-container" onClick={() => setOnModal(false)}>
-      <article className="MODAL__content" onClick={(e) => e.stopPropagation()}>
+    <div className={style.mainContainer} onClick={() => setOnModal(false)}>
+      <article className={style.__content} onClick={(e) => e.stopPropagation()}>
         {children}
       </article>
     </div>,

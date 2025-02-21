@@ -1,12 +1,12 @@
-.SEARCH__main-container {
+.mainContainer {
 	width: 100%;
 	border: none;
-	.SEARCH__label{
+	.__label{
 		display: block;
 		width: 100%;
 		margin-bottom: 0.5rem;
 	}
-	.SEARCH__input {
+	.__input {
 		display: block;
 		width: 100%;
 		padding-block: 0.75rem;

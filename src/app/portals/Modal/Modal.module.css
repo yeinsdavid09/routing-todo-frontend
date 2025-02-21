@@ -1,4 +1,4 @@
-.MODAL__main-container{
+.mainContainer{
 	position: fixed;
 	z-index: 3;
 	top: 0;
@@ -10,7 +10,7 @@
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.8);
 
-	.MODAL__content {
+	.__content {
 		position: relative;
 		z-index: 4;
 		cursor: pointer;

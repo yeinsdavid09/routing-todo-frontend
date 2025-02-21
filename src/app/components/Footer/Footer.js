@@ -1,5 +1,5 @@
 //* Base
-import "./Footer.css";
+import style from "./Footer.module.css";
 
 export function Footer() {
   //#region ----------------------------------- Variables ---------------------------------
@@ -11,8 +11,8 @@ export function Footer() {
   //#region --------------------------------- Html ---------------------------------
 
   return (
-    <div className="FOOTER__main-container">
-      <p className="FOOTER__text GLOBAL__text-body--1">
+    <div className={style.mainContainer}>
+      <p className={style.__text + " GLOBAL__text-body--1"}>
         &copy; Copyright {currentDate}
       </p>
     </div>

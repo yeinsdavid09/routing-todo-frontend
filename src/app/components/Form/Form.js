@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
 //* Base
-import "./Form.css";
+import style from "./Form.module.css";
 
 //* Contexts
 import { ModalContext } from "../../contexts/modalContext";
@@ -13,6 +13,7 @@ export function Form() {
   const { setOnModal } = useContext(ModalContext);
   const { addTasks } = useContext(TasksContext);
   const [newTask, setNewTask] = useState("");
+  const formIsValid = newTask.length >= 5;
 
   //#endregion
 
@@ -29,6 +30,7 @@ export function Form() {
 
   function save(event) {
     event.preventDefault();
+    if (!formIsValid) return;
     addTasks(newTask);
     setOnModal(false);
   }
@@ -38,28 +40,32 @@ export function Form() {
   //#region --------------------------------- Html ---------------------------------
 
   return (
-    <form className="FORM__main-container" onSubmit={(event) => save(event)}>
-      <label className="FORM__label GLOBAL__text-body--1">
+    <form className={style.mainContainer} onSubmit={(event) => save(event)}>
+      <label className={style.__label + " GLOBAL__text-body--1"}>
         <strong>Crear nueva tarea</strong>
       </label>
       <textarea
-        className="FORM__input GLOBAL__text-body--1"
+        className={style.__input + " GLOBAL__text-body--1"}
         placeholder="Agrega una nueva tarea"
         value={newTask}
         onChange={(event) => updateValue(event)}
       ></textarea>
-      <div className="FORM__buttons">
+      <div className={style.__buttons}>
         <button
-          className="FORM__button --cancel"
+          className={`${style.__button} ${style.__cancel_}`}
           type="button"
           onClick={(event) => cancel(event)}
         >
-          <span className="GLOBAL__text-body--1 FORM__span">
+          <span className={style.__span + " GLOBAL__text-body--1"}>
             <strong>Cancelar</strong>
           </span>
         </button>
-        <button className="FORM__button --save" type="submit">
-          <span className="GLOBAL__text-body--1 FORM__span">
+        <button
+          className={`${style.__button} ${style.__save_}`}
+          type="submit"
+          disabled={!formIsValid}
+        >
+          <span className={style.__span + " GLOBAL__text-body--1"}>
             <strong>Añadir</strong>
           </span>
         </button>

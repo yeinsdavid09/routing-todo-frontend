@@ -1,6 +1,8 @@
-//* Base
 import { useContext } from "react";
-import "./Search.css";
+//* Base
+import style from "./Search.module.css";
+
+//* Contexts
 import { TasksContext } from "../../contexts/tasksContext";
 
 export function Search() {
@@ -13,12 +15,15 @@ export function Search() {
   //#region --------------------------------- Html ---------------------------------
 
   return (
-    <fieldset className="SEARCH__main-container">
-      <label className="SEARCH__label GLOBAL__text-body--1" htmlFor="search">
+    <fieldset className={style.mainContainer}>
+      <label
+        className={style.__label + " GLOBAL__text-body--1"}
+        htmlFor="search"
+      >
         <strong>Busca una tarea</strong>
       </label>
       <input
-        className="SEARCH__input GLOBAL__text-body--1"
+        className={style.__input + " GLOBAL__text-body--1"}
         id="search"
         type="text"
         placeholder="Escribe la tarea que deseas encontrar..."

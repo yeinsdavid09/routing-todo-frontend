@@ -1,5 +1,5 @@
 //* Base
-import "./Item.css";
+import style from "./Item.module.css";
 
 export function Item({
   taskIndex,
@@ -11,22 +11,26 @@ export function Item({
   //#region --------------------------------- Html ---------------------------------
 
   return (
-    <li className={`ITEM__container ${completed && "--completed"}`}>
-      <div className="ITEM__texts--wrapper">
-        <span className="ITEM__button --index GLOBAL__text-body--1">
+    <li className={`${style.mainContainer} ${completed && style.__completed_}`}>
+      <div className={style.__textsWrapper}>
+        <span
+          className={`${style.__button} ${style.__index_} " GLOBAL__text-body--1"`}
+        >
           {taskIndex + 1}
         </span>
-        <span className="ITEM__text GLOBAL__text-body--1">{description}</span>
+        <span className={style.__text + " GLOBAL__text-body--1"}>
+          {description}
+        </span>
       </div>
-      <div className="ITEM__buttons--wrapper">
+      <div className={style.__buttonsWrapper}>
         <span
-          className="ITEM__button --check GLOBAL__text-body--1"
+          className={`${style.__button} ${style.__check_} " GLOBAL__text-body--1"`}
           onClick={onComplete}
         >
           &#10003;
         </span>
         <span
-          className="ITEM__button --remove GLOBAL__text-body--1"
+          className={`${style.__button} ${style.__remove_} " GLOBAL__text-body--1"`}
           onClick={onDelete}
         >
           &#10007;

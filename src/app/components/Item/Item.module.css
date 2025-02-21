@@ -1,4 +1,4 @@
-.ITEM__container {
+.mainContainer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -10,17 +10,17 @@
 	&:hover{
 		transform:scale(1.01)
 	}
-	&.--completed {
+	&.__completed_ {
 		border: 1px solid var(--success-color);
 		box-shadow: var(--success-box-shadow);
-		.ITEM__texts--wrapper {
-			.ITEM__text {
+		.__textsWrapper {
+			.__text {
 				text-decoration: line-through;
 			}
 		}
 	}
 
-	.ITEM__button {
+	.__button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -32,15 +32,15 @@
 		transition: var(--primary-transition-transform);
 		user-select: none;
 
-		&.--index{
+		&.__index_{
 			background-color: var(--light-color);
 		}
-		&.--check{
+		&.__check_{
 			color: var(--light-color);
 			text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 			background-color: var(--success-color);
 		}
-		&.--remove{
+		&.__remove_{
 			color: var(--light-color);
 			text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 			background-color: var(--error-color);
@@ -50,14 +50,14 @@
 		}
 	}
 
-	.ITEM__texts--wrapper{
+	.__textsWrapper{
 		width: calc(100% - 4rem);
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 		padding-left: 0.25rem;
 	}
-	.ITEM__buttons--wrapper{
+	.__buttonsWrapper{
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;

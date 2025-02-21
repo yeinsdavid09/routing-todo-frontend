@@ -1,10 +1,10 @@
 //* Base
-import "./List.css";
+import style from "./List.module.css";
 
 export function List({ children }) {
   //#region --------------------------------- Html ---------------------------------
 
-  return <ul className="LIST__main-container">{children}</ul>;
+  return <ul className={style.mainContainer}>{children}</ul>;
 
   //#endregion
 }
