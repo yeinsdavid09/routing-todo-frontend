@@ -1,18 +1,27 @@
 //* Base
-import "./App.css";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import "./App.module.css";
 import { ModalProvider } from "./contexts/modalContext";
 
 //* Contexts
 import { TasksProvider } from "./contexts/tasksContext";
 
 //* Components
-import { Layout } from "./layout/Layout";
+import { NotFound } from "./components/NotFound/NotFound";
+
+//* Routes
+import { LayoutRoutes } from "./layout/Layout.routes";
 
 export function App() {
   return (
     <TasksProvider>
       <ModalProvider>
-        <Layout></Layout>;
+        <HashRouter>
+          <Routes>
+            <Route path="/*" element={<LayoutRoutes />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </HashRouter>
       </ModalProvider>
     </TasksProvider>
   );

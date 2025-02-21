@@ -1,0 +1,29 @@
+.mainContainer {
+	width: 90%;
+	min-height: calc(100vh - 15rem);
+	margin-top: 8rem;
+	margin-bottom: 3rem;
+	margin-inline: auto;
+
+	.__counter,
+	.__search {
+		margin-bottom: 2rem;
+	}
+
+	.__list {
+		.__loading, .__error, .__empty{
+			max-width: 70%;
+			margin-inline: auto;
+			margin-top: 4rem;
+			text-align: center;
+			color: var(--secondary-color);
+		}
+	}
+
+	.__buttons {
+		position: fixed;
+		z-index: 3;
+		bottom: 1rem;
+		right: 1rem;
+	}
+}
