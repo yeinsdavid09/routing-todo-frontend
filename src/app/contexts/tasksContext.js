@@ -35,7 +35,7 @@ export function TasksProvider({ children }) {
   function addTasks(newTask) {
     const tasksCopy = [...tasks];
     tasksCopy.push({
-      id: tasksCopy.length + 2,
+      id: Math.floor(Math.random() * 900000) + 100000,
       description: newTask,
       completed: false,
     });
