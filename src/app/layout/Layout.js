@@ -8,7 +8,7 @@ import style from "./Layout.module.css";
 import { ModalContext } from "../contexts/modalContext";
 
 //* Components
-import { Header, Footer, Form } from "../components";
+import { Header, Footer } from "../components";
 import { Modal } from "../portals/Modal/Modal";
 
 export function Layout() {
@@ -31,11 +31,7 @@ export function Layout() {
       <footer className={style.__footer}>
         <Footer></Footer>
       </footer>
-      {onModal && (
-        <Modal>
-          <Form></Form>
-        </Modal>
-      )}
+      {onModal && <Modal></Modal>}
     </div>
   );
 

@@ -14,12 +14,14 @@
 		display: block;
 		width: 100%;
 		min-height: 10rem;
+		max-height: 13rem;
 		padding-block: 0.75rem;
 		padding-inline: 1.5rem;
 		border-radius: 0.5rem;
 		border: 2px solid var(--primary-color);
 		background-color: transparent;
 		outline: none;
+		resize: vertical;
 		transition: var(--primary-transition-all);
 		&:focus {
 			border-color: var(--secondary-color);

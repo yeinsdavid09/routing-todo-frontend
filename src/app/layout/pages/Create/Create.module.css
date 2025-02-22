@@ -1,3 +1,6 @@
 .mainContainer {
-	padding-top: 100px;
+	max-width: 60%;
+	min-height: calc(100vh - 4rem);
+	margin-inline: auto;
+	padding-top: 8rem;
 }

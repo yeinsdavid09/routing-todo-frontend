@@ -1,6 +1,6 @@
 {
-  "name": "basic-todo-frontend",
-  "version": "0.1.0",
+  "name": "routing-todo-frontend",
+  "version": "1.0.0",
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",

@@ -32,13 +32,25 @@ export function TasksProvider({ children }) {
 
   //#region --------------------------------- Methods ---------------------------------
 
+  function findTasks(taskId) {
+    return tasks.find((task) => task.id === taskId);
+  }
+
   function addTasks(newTask) {
     const tasksCopy = [...tasks];
     tasksCopy.push({
-      id: Math.floor(Math.random() * 900000) + 100000,
+      id: (Math.floor(Math.random() * 900000) + 100000).toString(),
       description: newTask,
       completed: false,
     });
+    setTasks(tasksCopy);
+  }
+
+  function editTasks(taskId, body) {
+    const tasksCopy = [...tasks];
+    const editingTask = tasksCopy.find((task) => task.id === taskId);
+    if (!editingTask) return;
+    editingTask.description = body;
     setTasks(tasksCopy);
   }
 
@@ -66,7 +78,9 @@ export function TasksProvider({ children }) {
         searchValue,
         setSearchValue,
         searchedTasks,
+        findTasks,
         addTasks,
+        editTasks,
         checkTasks,
         deleteTasks,
         loading,

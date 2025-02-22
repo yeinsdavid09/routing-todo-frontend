@@ -1,18 +1,16 @@
-import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 //* Base
 import style from "./Form.module.css";
 
 //* Contexts
-import { ModalContext } from "../../contexts/modalContext";
-import { TasksContext } from "../../contexts/tasksContext";
 
-export function Form() {
+export function Form({ formLabel, formInputValue, formSubmit }) {
   //#region ----------------------------------- Variables ---------------------------------
 
-  const { setOnModal } = useContext(ModalContext);
-  const { addTasks } = useContext(TasksContext);
-  const [newTask, setNewTask] = useState("");
+  const navigate = useNavigate();
+  const [newTask, setNewTask] = useState(formInputValue || "");
   const formIsValid = newTask.length >= 5;
 
   //#endregion
@@ -23,16 +21,10 @@ export function Form() {
     setNewTask(event.target.value);
   }
 
-  function cancel(event) {
-    event.preventDefault();
-    setOnModal(false);
-  }
-
   function save(event) {
     event.preventDefault();
     if (!formIsValid) return;
-    addTasks(newTask);
-    setOnModal(false);
+    formSubmit(newTask);
   }
 
   //#endregion
@@ -41,8 +33,8 @@ export function Form() {
 
   return (
     <form className={style.mainContainer} onSubmit={(event) => save(event)}>
-      <label className={style.__label + " GLOBAL__text-body--1"}>
-        <strong>Crear nueva tarea</strong>
+      <label className={style.__label + " GLOBAL__text-heading--4"}>
+        <strong>{formLabel}</strong>
       </label>
       <textarea
         className={style.__input + " GLOBAL__text-body--1"}
@@ -54,7 +46,7 @@ export function Form() {
         <button
           className={`${style.__button} ${style.__cancel_}`}
           type="button"
-          onClick={(event) => cancel(event)}
+          onClick={() => navigate("/")}
         >
           <span className={style.__span + " GLOBAL__text-body--1"}>
             <strong>Cancelar</strong>

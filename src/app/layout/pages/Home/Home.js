@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
 //* Base
@@ -5,7 +6,6 @@ import style from "./Home.module.css";
 
 //* Contexts
 import { TasksContext } from "../../../contexts/tasksContext";
-import { ModalContext } from "../../../contexts/modalContext";
 
 //* Components
 import { Item, Counter, Search, List, Button } from "../../../components";
@@ -13,9 +13,9 @@ import { Item, Counter, Search, List, Button } from "../../../components";
 export function Home() {
   //#region --------------------------------- Variables ---------------------------------
 
+  const navigate = useNavigate();
   const { searchedTasks, checkTasks, deleteTasks, loading, error } =
     useContext(TasksContext);
-  const { setOnModal } = useContext(ModalContext);
 
   //#endregion
 
@@ -24,10 +24,10 @@ export function Home() {
   return (
     <div className={style.mainContainer}>
       <div className={style.__counter}>
-        <Counter></Counter>
+        <Counter />
       </div>
       <div className={style.__search}>
-        <Search></Search>
+        <Search />
       </div>
       <div className={style.__list}>
         <List>
@@ -55,15 +55,16 @@ export function Home() {
                   taskIndex={index}
                   description={task.description}
                   completed={task.completed}
+                  onEdit={() => navigate(`/update/${task.id}`)}
                   onComplete={() => checkTasks(index)}
                   onDelete={() => deleteTasks(index)}
-                ></Item>
+                />
               );
             })}
         </List>
       </div>
       <div className={style.__buttons}>
-        <Button onButtonClick={() => setOnModal(true)}></Button>
+        <Button onButtonClick={() => navigate("/create")} />
       </div>
     </div>
   );

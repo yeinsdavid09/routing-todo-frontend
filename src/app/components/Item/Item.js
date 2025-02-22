@@ -5,6 +5,7 @@ export function Item({
   taskIndex,
   description,
   completed,
+  onEdit,
   onComplete,
   onDelete,
 }) {
@@ -23,6 +24,12 @@ export function Item({
         </span>
       </div>
       <div className={style.__buttonsWrapper}>
+        <span
+          className={`${style.__button} ${style.__edit_} " GLOBAL__text-body--1"`}
+          onClick={onEdit}
+        >
+          ✏
+        </span>
         <span
           className={`${style.__button} ${style.__check_} " GLOBAL__text-body--1"`}
           onClick={onComplete}
